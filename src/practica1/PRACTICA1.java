@@ -13,7 +13,7 @@ public class PRACTICA1 {
        
         Scanner entrada = new Scanner(System.in);
       
-       
+       System.out.println("hola mundo");
   do{ System.out.println(""); //hacer que se repita el mensaje 
       System.out.println("PACMAN - IPC - 2022");
        System.out.println("-------------------");
