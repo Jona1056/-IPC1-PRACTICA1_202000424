@@ -2,6 +2,8 @@
 
 package practica1;
 
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -9,12 +11,12 @@ public class PRACTICA1 {
 
  
     public static void main(String[] args) {
-      int OPCION;
+      int OPCION = 0;
       
         Scanner entrada = new Scanner(System.in);
-      
-    
-  do{ System.out.println(""); //hacer que se repita el mensaje 
+          boolean salir = false; //dato para guardar el metodo de salir, lo ponemos false
+    while(!salir){
+   System.out.println(""); //hacer que se repita el mensaje 
       System.out.println("PACMAN - IPC - 2022");
        System.out.println("-------------------");
        System.out.println("1.    INICIAR JUEGO");
@@ -23,21 +25,28 @@ public class PRACTICA1 {
        System.out.println("-------------------");
        System.out.println("  ELIGA UNA OPCION ");
       System.out.println("");
-   OPCION= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
-  }while(OPCION > 3 || OPCION == 0   );//SI LA VARIABLE OPCION CUMPLE CON ESTAS CONDICIONES, terminara el ciclo
-  
+   
+    try{// metodo para que no nos salga un error y si lo hay que vaya al catch
+  OPCION= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
   switch(OPCION){
       case 1:
-      MATRIZ MATRIZ1 = new MATRIZ();//CREAMOS UN NUEVO OBJETO DESDE LA CLASE MATRIZ
-      MATRIZ1.Matriz(); //MANDAMOS A LLAMAR LA CLASE MATRIZ 
+     MATRIZ MATRIZ1 = new MATRIZ();
+     MATRIZ1.Matriz();
       break;
       case 2:
       System.out.println("hola mundo");
       break;
       case 3:
       System.out.println("!!!!!GRACIAS POR JUGAR!!!!!!!!");
-      System.exit(0);//OPCION PARA TERMINAR EL JUEGO
+      salir = true; //como es verdadero nos saca del juego
+      
+        break;
+  }}catch(InputMismatchException e) {//envia un mensaje que queramos si no cumple alguna de las opciones que estaban anteriormente
+ 
+   entrada.nextLine();//entrada para reconocer una letra y no sea infinito el bucle
   }
+          }
+    
     }}
 
 
