@@ -14,8 +14,8 @@ public class MATRIZ {
         
          Scanner entrada = new Scanner(System.in);
        
-         int[][] TableroID = new int[fila][columna];//dimensiones del tablero
-        String[][] Tablero = new String[fila][columna];//Tablero para el pacman y 
+         
+       
         
         
          System.out.println("INGRESE SU NOMBRE");
@@ -23,7 +23,6 @@ public class MATRIZ {
         
         do{
           
-         
        
         System.out.println("-----------------------------");
         System.out.println("    BIENVENIDO " + nombre);
@@ -42,13 +41,36 @@ public class MATRIZ {
         System.out.print("INGRESE CANTIDAD DE TRAMPAS: [0-10]");
         c = entrada.nextInt();
        System.out.println("");
-      System.out.println(a);
-      System.out.println(b);
+     
+    
         }while(a > 20   || b >13   || c >10);
+        //i = filas j= columnas
         
-      
-            
+       System.out.println(a);
+      System.out.println(b);
+      System.out.println(fila);
         
+ 
+            int[][] TableroID = new int[fila][columna];//dimensiones del tablero
+          String[][] Tablero = new String[fila][columna];//Tablero para el pacman y 
+       
+    //llenado de la matriz
+    int x = fila*columna;
+    for(int i = 0; i<TableroID.length; i++){
+        for(int j = TableroID[0].length-1 ; j>=0; j--){
+            TableroID[i][j] = x;
+            x--;
+        }
     }
-}
+    System.out.println("----------------------------");
+    for(int i = 0; i <TableroID.length; i++){
+        for(int j = 0; j<TableroID[0].length;j++){
+            
+            System.out.print("|    " + " ");
+        }
+        System.out.println("");
+    }
+    System.out.println("----------------------------");
+    
+}}
  
