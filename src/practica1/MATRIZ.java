@@ -1,9 +1,12 @@
 
 package practica1;
 
+import java.text.DecimalFormat;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MATRIZ {
+     
      static  int a =0;
      static int b = 0;
      static int c = 0;
@@ -11,66 +14,52 @@ public class MATRIZ {
      static int columna =0;
      static String nombre = "";
      public static void Matriz(){
-        
-         Scanner entrada = new Scanner(System.in);
-       
-         
-       
-        
-        
-         System.out.println("INGRESE SU NOMBRE");
-        nombre = entrada.nextLine();
-        
+         DecimalFormat formato1 = new DecimalFormat("#");
+        llenadoMatriz Matrizllena = new llenadoMatriz();
+        Scanner entrada = new Scanner(System.in);
+        try{
         do{
-          
-       
-        System.out.println("-----------------------------");
-        System.out.println("    BIENVENIDO " + nombre);
-        System.out.println("          PACMAN             ");
-       
+        System.out.println("INGRESE SU NOMBRE");
+        nombre = entrada.nextLine();  
+        if(nombre == ""   ){
+            System.out.print("POR FAVOR, ");
+        }}while(nombre == ""   );
+   
+        System.out.println("--------------------------------");
+        System.out.println("******BIENVENIDO "+nombre+"*****");
+        System.out.println("************PACMAN**************");
         System.out.println("INGRESE EL TAMAÑO DE SU TABLERO"); 
-        System.out.println("numero de filas");
+        System.out.print("numero de filas: ");
         fila = entrada.nextInt();
-        System.out.println("numero de columnas");
+        System.out.print("numero de columnas: ");
         columna = entrada.nextInt();
         
-        System.out.print("INGRESE CANTIDAD DE COMIDA: [0-20]:");
+        do{
+        System.out.print("INGRESE CANTIDAD DE COMIDA: " + "[0 - " + formato1.format(((fila*columna)*0.4)-0.5) + "]: ");
         a = entrada.nextInt();
-        System.out.print("INGRESE CANTIDAD DE PAREDES: [0-13]:");
+        if(  a >(fila*columna)*0.40){
+        System.out.println("ERROR, LIMITE INCORRECTO");
+        } }   while(a > (fila*columna)*0.40 );
+    
+        do{
+        System.out.print("INGRESE CANTIDAD DE PAREDES: " + "[0 - " + formato1.format(((fila*columna)*0.2)-0.5) + "]: ");
         b = entrada.nextInt();
-        System.out.print("INGRESE CANTIDAD DE TRAMPAS: [0-10]");
+        if(  b>(fila*columna)*0.20){
+        System.out.println("ERROR, LIMITE INCORRECTO");
+        } }while(b>(fila*columna)*0.20);
+        
+        do{
+        System.out.print("INGRESE CANTIDAD DE TRAMPAS: " + "[0 - " + formato1.format(((fila*columna)*0.2)-0.5) + "]: ");
         c = entrada.nextInt();
-       System.out.println("");
+        if(  c>(fila*columna)*0.20){
+        System.out.println("ERROR, LIMITE INCORRECTO");
+        }}while(c>(fila*columna)*0.20);
+        
+        System.out.println("");
      
     
-        }while(a > 20   || b >13   || c >10);
-        //i = filas j= columnas
-        
-       System.out.println(a);
-      System.out.println(b);
-      System.out.println(fila);
-        
  
-            int[][] TableroID = new int[fila][columna];//dimensiones del tablero
-          String[][] Tablero = new String[fila][columna];//Tablero para el pacman y 
-       
-    //llenado de la matriz
-    int x = fila*columna;
-    for(int i = 0; i<TableroID.length; i++){
-        for(int j = TableroID[0].length-1 ; j>=0; j--){
-            TableroID[i][j] = x;
-            x--;
-        }
-    }
-    System.out.println("----------------------------");
-    for(int i = 0; i <TableroID.length; i++){
-        for(int j = 0; j<TableroID[0].length;j++){
-            
-            System.out.print("|    " + " ");
-        }
-        System.out.println("");
-    }
-    System.out.println("----------------------------");
-    //
-}}
+           Matrizllena.TABLERO();
+          }catch(InputMismatchException e){
+        }}}
  
