@@ -7,12 +7,13 @@ import java.util.Scanner;
 
 public class MATRIZ {
      
-     static  int a =0;
-     static int b = 0;
-     static int c = 0;
+     static  int frutas =0;
+     static int paredes = 0;
+     static int trampas = 0;
      static int fila = 0;
      static int columna =0;
      static String nombre = "";
+     static String Pos="";
      public static void Matriz(){
          DecimalFormat formato1 = new DecimalFormat("#");
         llenadoMatriz Matrizllena = new llenadoMatriz();
@@ -28,38 +29,40 @@ public class MATRIZ {
         System.out.println("--------------------------------");
         System.out.println("******BIENVENIDO "+nombre+"*****");
         System.out.println("************PACMAN**************");
-        System.out.println("INGRESE EL TAMAÑO DE SU TABLERO"); 
-        System.out.print("numero de filas: ");
-        fila = entrada.nextInt();
-        System.out.print("numero de columnas: ");
-        columna = entrada.nextInt();
+        System.out.print("INGRESE EL TAMAÑO DE SU TABLERO; (FILAS, COLUMNAS): "); 
+        String Pos = entrada.next();
+         String []datos = Pos.split(",");
+          fila = Integer.parseInt(datos[0]);
+         columna = Integer.parseInt(datos[1]);
+            
         
         do{
         System.out.print("INGRESE CANTIDAD DE COMIDA: " + "[0 - " + formato1.format(((fila*columna)*0.4)-0.5) + "]: ");
-        a = entrada.nextInt();
-        if(  a >(fila*columna)*0.40){
+        frutas = entrada.nextInt();
+        if(  frutas >(fila*columna)*0.40){
         System.out.println("ERROR, LIMITE INCORRECTO");
-        } }   while(a > (fila*columna)*0.40 );
+        } }   while(frutas > (fila*columna)*0.40 );
     
         do{
         System.out.print("INGRESE CANTIDAD DE PAREDES: " + "[0 - " + formato1.format(((fila*columna)*0.2)-0.5) + "]: ");
-        b = entrada.nextInt();
-        if(  b>(fila*columna)*0.20){
+        paredes = entrada.nextInt();
+        if(  paredes>(fila*columna)*0.20){
         System.out.println("ERROR, LIMITE INCORRECTO");
-        } }while(b>(fila*columna)*0.20);
+        } }while(paredes>(fila*columna)*0.20);
         
         do{
         System.out.print("INGRESE CANTIDAD DE TRAMPAS: " + "[0 - " + formato1.format(((fila*columna)*0.2)-0.5) + "]: ");
-        c = entrada.nextInt();
-        if(  c>(fila*columna)*0.20){
+        trampas = entrada.nextInt();
+        if(  trampas>(fila*columna)*0.20){
         System.out.println("ERROR, LIMITE INCORRECTO");
-        }}while(c>(fila*columna)*0.20);
+        }}while(trampas>(fila*columna)*0.20);
         
         System.out.println("");
      
     
  
            Matrizllena.TABLERO();
+           
           }catch(InputMismatchException e){
         }}}
  
