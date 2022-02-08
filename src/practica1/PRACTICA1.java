@@ -24,13 +24,15 @@ public class PRACTICA1 {
        System.out.println("2. TABLA POSICIONES");
        System.out.println("3.            SALIR");
        System.out.println("-------------------");
-       System.out.println("  ELIGA UNA OPCION ");
-       System.out.println("");
+       System.out.print  ("ELIGA UNA OPCION...");
+
    
       try{// metodo para que no nos salga un error y si lo hay que vaya al catch
       OPCION= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
       switch(OPCION){
+  
       case 1:
+       System.out.println("-------------------");
       MATRIZ MATRIZ1 = new MATRIZ();
       MATRIZ1.Matriz();
       break;

@@ -6,7 +6,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MATRIZ {
-     
+    static     int selecjugador = 0;
+    String []datos = Pos.split(",");
+     static String ficha = "";
      static  int frutas =0;
      static int paredes = 0;
      static int trampas = 0;
@@ -20,42 +22,83 @@ public class MATRIZ {
         Scanner entrada = new Scanner(System.in);
         try{
         do{
-        System.out.println("INGRESE SU NOMBRE");
+        System.out.print("INGRESE SU NOMBRE: ");
         nombre = entrada.nextLine();  
         if(nombre == ""   ){
             System.out.print("POR FAVOR, ");
         }}while(nombre == ""   );
    
-        System.out.println("--------------------------------");
-        System.out.println("******BIENVENIDO "+nombre+"*****");
-        System.out.println("************PACMAN**************");
-        System.out.print("INGRESE EL TAMAÑO DE SU TABLERO; (FILAS, COLUMNAS): "); 
-        String Pos = entrada.next();
-         String []datos = Pos.split(",");
-          fila = Integer.parseInt(datos[0]);
+        System.out.println("------------------");
+        System.out.println("BIENVENIDO "+nombre );
+        System.out.println("PACMAN............");
+  
+        System.out.print(  "INGRESE EL TAMAÑO DE SU TABLERO; (FILAS, COLUMNAS): "); 
+        Pos = entrada.next();
+       
+        String []datos = Pos.split(",");
+         fila = Integer.parseInt(datos[0]);
          columna = Integer.parseInt(datos[1]);
-            
         
+    
+         do{
+         System.out.print("SELECCIONE JUGADOR " + "[0 - 9]" + "[♥,♦,◙,♣,◘,♠,▼,♪,♫,☺]");
+      
+         selecjugador = entrada.nextInt();
+         if(selecjugador == 0){
+         ficha = "♥";
+         }else if(selecjugador == 1){
+         ficha = "♦";
+         }else if(selecjugador == 2){
+         ficha = "◙";
+         }else if(selecjugador == 3){
+         ficha = "♣";
+         }else if(selecjugador == 4){
+         ficha = "◘";
+         }else if(selecjugador ==5){
+         ficha = "♠";
+         }else if(selecjugador ==6){
+          ficha = "▼";
+         }else if (selecjugador == 7){
+           ficha = "♪";
+         }else if (selecjugador ==8){
+          ficha = "♫";
+         }else if (selecjugador == 9){
+             ficha = "☺";
+         }else{
+             System.out.println("eliga una opcion correcta");
+         }
+         }while(selecjugador > 9);
+        int limitedefrutas = (int) ((fila*columna)*0.4);
+        int limiteparedes = (int) ((fila*columna*0.2));
+        int limitetrampas = (int)  ((fila*columna)*0.2);
         do{
-        System.out.print("INGRESE CANTIDAD DE COMIDA: " + "[0 - " + formato1.format(((fila*columna)*0.4)-0.5) + "]: ");
+        System.out.print("INGRESE CANTIDAD DE COMIDA: " + "[1 - " + limitedefrutas + "]: ");
         frutas = entrada.nextInt();
-        if(  frutas >(fila*columna)*0.40){
+        if(  frutas > limitedefrutas){
         System.out.println("ERROR, LIMITE INCORRECTO");
-        } }   while(frutas > (fila*columna)*0.40 );
+        }else if (frutas == 0){
+            System.out.println("No se permite 0 Frutas en el tablero");
+        }  }   while(frutas > limitedefrutas || frutas == 0);
     
         do{
-        System.out.print("INGRESE CANTIDAD DE PAREDES: " + "[0 - " + formato1.format(((fila*columna)*0.2)-0.5) + "]: ");
+        System.out.print("INGRESE CANTIDAD DE PAREDES: " + "[1 - " + limiteparedes + "]: ");
         paredes = entrada.nextInt();
-        if(  paredes>(fila*columna)*0.20){
+        if(  paredes> limiteparedes){
         System.out.println("ERROR, LIMITE INCORRECTO");
-        } }while(paredes>(fila*columna)*0.20);
+        } else if (paredes == 0){
+            System.out.println("No se permite 0 Paredes en el tablero");
+        }
+        }while(paredes>limiteparedes || paredes ==0);
         
         do{
-        System.out.print("INGRESE CANTIDAD DE TRAMPAS: " + "[0 - " + formato1.format(((fila*columna)*0.2)-0.5) + "]: ");
+        System.out.print("INGRESE CANTIDAD DE TRAMPAS: " + "[1 - " + limitetrampas + "]: ");
         trampas = entrada.nextInt();
-        if(  trampas>(fila*columna)*0.20){
+        if(  trampas> limitetrampas ){
         System.out.println("ERROR, LIMITE INCORRECTO");
-        }}while(trampas>(fila*columna)*0.20);
+        }else if (trampas == 0){
+            System.out.println("No se permite 0 Trampas en el tablero");
+        }
+        }while(trampas>limitetrampas || trampas == 0);
         
         System.out.println("");
      
