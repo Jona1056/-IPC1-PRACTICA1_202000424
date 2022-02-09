@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class PRACTICA1 {
     static int OPCION = 0;
- 
+ static int a = 0;
  
     public static void main(String[] args) {
      
@@ -32,12 +32,15 @@ public class PRACTICA1 {
       switch(OPCION){
   
       case 1:
+   
+         
        System.out.println("-------------------");
       MATRIZ MATRIZ1 = new MATRIZ();
       MATRIZ1.Matriz();
       break;
       case 2:
-      System.out.println("hola mundo");
+      POSICIONES pos = new POSICIONES();
+      pos.Tabla();
       break;
       case 3:
       System.out.println("!!!!!GRACIAS POR JUGAR!!!!!!!!");

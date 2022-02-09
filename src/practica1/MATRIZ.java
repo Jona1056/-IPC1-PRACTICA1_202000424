@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MATRIZ {
+    
     static     int selecjugador = 0;
     String []datos = Pos.split(",");
      static String ficha = "";
@@ -27,7 +28,8 @@ public class MATRIZ {
         if(nombre == ""   ){
             System.out.print("POR FAVOR, ");
         }}while(nombre == ""   );
-   
+         
+       
         System.out.println("------------------");
         System.out.println("BIENVENIDO "+nombre );
         System.out.println("PACMAN............");

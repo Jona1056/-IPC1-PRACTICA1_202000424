@@ -13,11 +13,15 @@ import static practica1.MATRIZ.fila;
  */
 
 public class llenadoMatriz {
+    boolean salir = false; //dato para guardar el metodo de salir, lo ponemos false
     static int filanueva = 0;
+    static int columnanueva = 0;
     static int punto = 0;
     static int puntos = 0;
     static int vidas = 3;
-    static int movimiento =0;
+    static int vida =0;
+    static int seleccion=0;
+    
  static int marcofila = 0;
   static int filapacman= 0;
      static int columnapacman =0;
@@ -171,164 +175,297 @@ public class llenadoMatriz {
            System.out.println("  ");
            }
   System.out.println("");
-       int subio = filapacman-1;
-  do{
- System.out.println("8 = subir  5 = Bajar  4 = Izquierda  6 = derecha");
- System.out.println("e = finalizar juego  m = pausar juego");
- movimiento = entrada.nextInt();
-        // MOVIMIENTO DE PACMAN
+    
+       int salida = 0;
+  do{    
+ System.out.println("W = subir  S = Bajar  A = Izquierda  D = derecha");
+ System.out.println("E = finalizar juego M= pausar juego");
+           String movimiento = entrada.next();
+     
+switch(movimiento){
+     // MOVIMIENTO DE PACMAN
         //Movimiento hacia arriba
-      if(movimiento == 8){
-          
-   
-           if(Matriz[subio][columnapacman] == "@"){
+  
+        case "W" :
+             if(Matriz[filapacman-1][columnapacman] == "@"){
               Matriz[filapacman][columnapacman] = " ";
-               Matriz[subio][columnapacman] = MATRIZ.ficha;
+               Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
                
               puntos = puntos +5;
-           filanueva = subio;
-               subio = filanueva-1;
+             
                filapacman = filapacman-1;
               MATRIZ.frutas--;
-          }else if(Matriz[subio][columnapacman]=="?"){
+           }
+             
+             else if(Matriz[filapacman-1][columnapacman]=="?"){
                  Matriz[filapacman][columnapacman] = " ";
-               Matriz[subio][columnapacman] = MATRIZ.ficha;
-                filanueva = subio;
-               subio = filanueva-1;
+               Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
+               
                filapacman = filapacman-1;
                puntos = puntos+10;
                  MATRIZ.frutas--;
-          }else if(Matriz[subio][columnapacman] == " "){
+          }else if(Matriz[filapacman-1][columnapacman] == " "){
                Matriz[filapacman][columnapacman] = " ";
-              Matriz[subio][columnapacman] = MATRIZ.ficha;
-               filanueva = subio;
-               subio = filanueva-1;
+              Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
+               
                filapacman = filapacman-1;
-          }else if(Matriz[subio][columnapacman] == "#"){
+          }else if(Matriz[filapacman-1][columnapacman] == "#"){
               
           }
           
           
           //metodo para que aparezca de nuevo una trampa//
-          else if(Matriz[subio][columnapacman] == "X"){
+          else if(Matriz[filapacman-1][columnapacman] == "X"){
               Matriz[filapacman][columnapacman] = " ";
-              Matriz[subio][columnapacman] = MATRIZ.ficha;
-              filanueva = subio;
-               subio = filanueva-1;
-               filapacman = filapacman-1;
-               vidas--;
-           System.out.println("");
-           System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos   );
-        
-         for(int i = 0; i<marcofila; i++){
-           for(int j = 0; j <marcocolumna; j++){
-         System.out.print(Matriz[i][j] +"   ");
-           }
-           System.out.println("  ");
-           }
-          System.out.println("");
-               
-               
-               System.out.println("8 = subir  5 = Bajar  4 = Izquierda  6 = derecha");
-               System.out.println("e = finalizar juego  m = pausar juego");
-               movimiento = entrada.nextInt();
-                if(movimiento == 8){
-                    
-                     if(Matriz[subio][columnapacman] == "@"){
-              Matriz[filapacman][columnapacman] = "X";
-               Matriz[subio][columnapacman] = MATRIZ.ficha;
-              puntos = puntos +5;
-            filanueva = subio;
-             subio = filanueva-1;
-             filapacman = filapacman-1;
-              MATRIZ.frutas--;
-          }else if(Matriz[subio][columnapacman]=="?"){
-                 Matriz[filapacman][columnapacman] = "X";
-               Matriz[subio][columnapacman] = MATRIZ.ficha;
-                subio = filapacman;
-              puntos = puntos+10;
-                subio = filanueva-1;
-                 filapacman = filapacman-1;
-                 MATRIZ.frutas--;
-          }else if(Matriz[subio][columnapacman] == " "){
-               Matriz[filapacman][columnapacman] = "X";
-              Matriz[subio][columnapacman] = MATRIZ.ficha;
-               filanueva = subio;
-               subio = filanueva-1;
-               filapacman = filapacman-1;
-          }else if(Matriz[subio][columnapacman] == "#"){
+              Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
+             
               
-          }else if(Matriz[subio][columnapacman] == "X"){
-              Matriz[filapacman][columnapacman] = "X";
-              Matriz[subio][columnapacman] = MATRIZ.ficha;
-              filanueva = subio;
-               subio = filanueva-1;
                filapacman = filapacman-1;
-               vidas--;
-               
-               System.out.println("");
-           System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos   );
-        
-         for(int i = 0; i<marcofila; i++){
-           for(int j = 0; j <marcocolumna; j++){
-         System.out.print(Matriz[i][j] +"   ");
-           }
-           System.out.println("  ");
-           }
-          System.out.println("");
-               
-               
-               System.out.println("8 = subir  5 = Bajar  4 = Izquierda  6 = derecha");
-               System.out.println("e = finalizar juego  m = pausar juego");
-               movimiento = entrada.nextInt();
-                if(movimiento == 8){
-                    
-                     if(Matriz[subio][columnapacman] == "@"){
-              Matriz[filapacman][columnapacman] = "X";
-               Matriz[subio][columnapacman] = MATRIZ.ficha;
-              puntos = puntos +5;
-            filanueva = subio;
-             subio = filanueva-1;
-             filapacman = filapacman-1;
-              MATRIZ.frutas--;
-          }else if(Matriz[subio][columnapacman]=="?"){
-                 Matriz[filapacman][columnapacman] = "X";
-               Matriz[subio][columnapacman] = MATRIZ.ficha;
-                subio = filapacman;
-              puntos = puntos+10;
-                subio = filanueva-1;
-                 filapacman = filapacman-1;
-                 MATRIZ.frutas--;
-          }else if(Matriz[subio][columnapacman] == " "){
-               Matriz[filapacman][columnapacman] = "X";
-              Matriz[subio][columnapacman] = MATRIZ.ficha;
-               filanueva = subio;
-               subio = filanueva-1;
-               filapacman = filapacman-1;
-          }else if(Matriz[subio][columnapacman] == "#"){
-              
-          }else if(Matriz[subio][columnapacman] == "X"){
-              Matriz[filapacman][columnapacman] = "X";
-              Matriz[subio][columnapacman] = MATRIZ.ficha;
-              filanueva = subio;
-               subio = filanueva-1;
-               filapacman = filapacman-1;
-               vidas--;
-               
-               
-               
-               
-               
+             
+              vidas--;
+             
+           
+      } //MOVIMINETO DESDE ARRIBA HACIA LA PARTE DE ABAJO
+          else if(Matriz[0][columnapacman]== "-"){
+       if(Matriz[fila][columnapacman]== " "){
+           Matriz[1][columnapacman] = " ";
+              Matriz[fila][columnapacman] = MATRIZ.ficha;
+              filapacman = fila;
                 }
-               
-               
-               
-                }}
-          }
-      }}
        
+       else if(Matriz[fila][columnapacman] == "@"){
+            Matriz[1][columnapacman] = " ";
+             Matriz[fila][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = fila;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[fila][columnapacman]=="?"){
+           Matriz[1][columnapacman] = " ";
+             Matriz[fila][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = fila;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[fila][columnapacman]== "#"){
+        }
+       
+     
+       else  if(Matriz[fila][columnapacman]== "X"){
+           Matriz[1][columnapacman] = " ";
+           Matriz[fila][columnapacman] = MATRIZ.ficha;
+           filapacman = fila;
+            vidas--;
+       }
+          }     
+        else {
+              
+          }
+        break;
+    case "S":
+        
+          if(Matriz[filapacman+1][columnapacman] == "@"){
+              Matriz[filapacman][columnapacman] = " ";
+               Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+               
+              puntos = puntos +5;
+               
+               filapacman = filapacman+1;
+              MATRIZ.frutas--;
+          }else if(Matriz[filapacman+1][columnapacman]=="?"){
+                 Matriz[filapacman][columnapacman] = " ";
+               Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+              
+               filapacman = filapacman+1;
+               puntos = puntos+10;
+                 MATRIZ.frutas--;
+          }else if(Matriz[filapacman+1][columnapacman] == " "){
+               Matriz[filapacman][columnapacman] = " ";
+              Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+            
+               filapacman = filapacman+1;
+          }else if(Matriz[filapacman+1][columnapacman] == "#"){
+              
+          }
+          
+          
+      
+          else if(Matriz[filapacman+1][columnapacman] == "X"){
+              Matriz[filapacman][columnapacman] = " ";
+              Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+            
+            
+               filapacman = filapacman+1;
+            vidas--;
+           
+      }
+          
+          //METODO MOVIMIENTO DE ABAJO PARA ARRIBA
+          else if (Matriz[fila+1][columnapacman]=="-"){
+              if(Matriz[1][columnapacman]== " "){
+              Matriz[fila][columnapacman] = " ";
+              Matriz[1][columnapacman] = MATRIZ.ficha;
+              filapacman = 1;
+          }
+              
+              else if(Matriz[1][columnapacman] == "@"){
+            Matriz[fila][columnapacman] = " ";
+             Matriz[1][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = 1;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[1][columnapacman]=="?"){
+           Matriz[fila][columnapacman] = " ";
+             Matriz[1][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = 1;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[1][columnapacman]== "#"){
+        }
+       
+     
+       else  if(Matriz[1][columnapacman]== "X"){
+           Matriz[fila][columnapacman] = " ";
+           Matriz[1][columnapacman] = MATRIZ.ficha;
+           filapacman = 1;
+         
+            vidas--;
+       }
+          }
+          
+         
+      
+        break;
+    case "A":
+         if(Matriz[filapacman][columnapacman-1] == "@"){
+              Matriz[filapacman][columnapacman] = " ";
+               Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+               
+              puntos = puntos +5;
+           
+               columnapacman = columnapacman-1;
+              MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman-1]=="?"){
+                 Matriz[filapacman][columnapacman] = " ";
+               Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+            
+               columnapacman= columnapacman-1;
+               puntos = puntos+10;
+                 MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman-1] == " "){
+               Matriz[filapacman][columnapacman] = " ";
+              Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+           
+               columnapacman = columnapacman-1;
+          }else if(Matriz[filapacman][columnapacman-1] == "#"){
+              
+          }
+          
+          
+          //metodo para que aparezca de nuevo una trampa//
+          else if(Matriz[filapacman][columnapacman-1] == "X"){
+              Matriz[filapacman][columnapacman] = " ";
+              Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+            
+         
+               columnapacman = columnapacman-1;
+           vidas--;
+           
+          }else if(Matriz[filapacman][1]=="|"){
+              
+          }else{
+          
+      }
+        break;
+    case "D":
+         if(Matriz[filapacman][columnapacman+1] == "@"){
+              Matriz[filapacman][columnapacman] = " ";
+               Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+               
+              puntos = puntos +5;
+            
+               columnapacman = columnapacman+1;
+              MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman+1]=="?"){
+                 Matriz[filapacman][columnapacman] = " ";
+               Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+          
+               columnapacman= columnapacman+1;
+               puntos = puntos+10;
+                 MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman+1] == " "){
+               Matriz[filapacman][columnapacman] = " ";
+              Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+           
+               columnapacman = columnapacman+1;
+          }else if(Matriz[filapacman][columnapacman+1] == "#"){
+              
+          }
+          
+          
+          //metodo para que aparezca de nuevo una trampa//
+          else if(Matriz[filapacman][columnapacman+1] == "X"){
+              Matriz[filapacman][columnapacman] = " ";
+              Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+            
+            
+               columnapacman = columnapacman+1;
+               vidas--;
+           
+      }else if (Matriz[filapacman][columna]== "|"){
+              
+          }else{
+          
+      }
+        
+        
+        break;
+    case "E":
+     
+        salir = true;
+    
+        break;
+        
+    case "M":
+        
+       
+       System.out.println(""); //hacer que se repita el mensaje 
+       System.out.println("PACMAN - IPC - 2022");
+       System.out.println("-------------------");
+       System.out.println("1.    Reanudar Juego");
+       System.out.println("2. TABLA POSICIONES");
+       System.out.println("3.            SALIR");
+       System.out.println("-------------------");
+       System.out.print  ("ELIGA UNA OPCION...");
+       
+        try{// metodo para que no nos salga un error y si lo hay que vaya al catch
+      seleccion= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
+     if(seleccion == 1){
+         
+      }else if(seleccion ==2){
+          
+      }else if (seleccion == 3){
+          salir = true;
+      }
+        }catch(InputMismatchException e) {//envia un mensaje que queramos si no cumple alguna de las opciones que estaban anteriormente
+ 
+       entrada.nextLine();//entrada para reconocer una letra y no sea infinito el bucle
+        }
+       
+
+        
+}
+     
       System.out.println("");
-    System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos   );
+    System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos + " " + "FRUTAS: " + MATRIZ.frutas   );
         
   for(int i = 0; i<marcofila; i++){
            for(int j = 0; j <marcocolumna; j++){
@@ -337,13 +474,17 @@ public class llenadoMatriz {
            System.out.println("  ");
            }
   System.out.println("");
+  } while(MATRIZ.frutas>0 && vidas>0 && !salir );
 
-  }while(vidas > 0 || MATRIZ.frutas >= 1 );
-  
+   System.out.println("------------------------------------------------");
+   System.out.println("Sus Datos obtenidos fueron:");
    System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos   );
-   
+   System.out.println("------------------------------------------------");
+   vidas = 3;
+   puntos = 0;
+      
    }catch(InputMismatchException e){
-       
+
    }
    return null;// indicar que salimos del metodo
       } 
