@@ -4,11 +4,14 @@ package practica1;
 import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import static practica1.POSICIONES.Top;
 
 public class MATRIZ {
-    
+  
+   static int num = 1;
     static     int selecjugador = 0;
-    String []datos = Pos.split(",");
+     static  String []datos = new String[1];
+              
      static String ficha = "";
      static  int frutas =0;
      static int paredes = 0;
@@ -21,26 +24,36 @@ public class MATRIZ {
          DecimalFormat formato1 = new DecimalFormat("#");
         llenadoMatriz Matrizllena = new llenadoMatriz();
         Scanner entrada = new Scanner(System.in);
-        try{
+     try{
         do{
+         System.out.println("");
         System.out.print("INGRESE SU NOMBRE: ");
-        nombre = entrada.nextLine();  
+        nombre = entrada.nextLine(); 
+      
+       
         if(nombre == ""   ){
             System.out.print("POR FAVOR, ");
         }}while(nombre == ""   );
-         
-       
+        
+      
+        System.out.println("");
         System.out.println("------------------");
         System.out.println("BIENVENIDO "+nombre );
         System.out.println("PACMAN............");
-  
+do{
         System.out.print(  "INGRESE EL TAMAÑO DE SU TABLERO; (FILAS, COLUMNAS): "); 
-        Pos = entrada.next();
-       
+        Pos = entrada.nextLine();
         String []datos = Pos.split(",");
          fila = Integer.parseInt(datos[0]);
-         columna = Integer.parseInt(datos[1]);
+        columna = Integer.parseInt(datos[1]);
+        if(fila <=4 || columna <=4 ){
+            System.out.println("el tablero no puede ser tan pequeño");
+        }else if(fila >25 || columna >25){
+            System.out.println("El tablero no puede ser tan grande");
+        }
         
+}while(fila<=4 || columna <=4 ||fila >25 || columna >25);
+       
     
          do{
          System.out.print("SELECCIONE JUGADOR " + "[0 - 9]" + "[♥,♦,◙,♣,◘,♠,▼,♪,♫,☺]");
@@ -107,7 +120,9 @@ public class MATRIZ {
     
  
            Matrizllena.TABLERO();
-           
-          }catch(InputMismatchException e){
-        }}}
+     }catch(InputMismatchException e){
+
+   }
+   
+          }}
  

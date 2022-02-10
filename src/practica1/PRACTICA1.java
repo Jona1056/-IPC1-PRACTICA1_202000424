@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class PRACTICA1 {
     static int OPCION = 0;
- static int a = 0;
+ static int cont = 1;
  
     public static void main(String[] args) {
      
@@ -37,6 +37,7 @@ public class PRACTICA1 {
        System.out.println("-------------------");
       MATRIZ MATRIZ1 = new MATRIZ();
       MATRIZ1.Matriz();
+     
       break;
       case 2:
       POSICIONES pos = new POSICIONES();

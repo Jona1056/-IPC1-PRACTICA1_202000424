@@ -6,6 +6,9 @@ import java.util.Random;
 import java.util.Scanner;
 import static practica1.MATRIZ.columna;
 import static practica1.MATRIZ.fila;
+import static practica1.MATRIZ.num;
+import static practica1.POSICIONES.Top;
+import static practica1.PRACTICA1.cont;
 
 /**
  *
@@ -13,13 +16,14 @@ import static practica1.MATRIZ.fila;
  */
 
 public class llenadoMatriz {
+    static  String nombretop = "";
     boolean salir = false; //dato para guardar el metodo de salir, lo ponemos false
     static int filanueva = 0;
     static int columnanueva = 0;
     static int punto = 0;
     static int puntos = 0;
     static int vidas = 3;
-    static int vida =0;
+  static int topfrutas = 1;
     static int seleccion=0;
     
  static int marcofila = 0;
@@ -136,6 +140,8 @@ public class llenadoMatriz {
   //Pedir datos al usuario sobre el Pacman
   do{
         do{
+             vidas = 3;
+             puntos = 0;
      System.out.println("------------------");
      System.out.print("INGRESE LA POSICION DE EL PACMAN; (FILAS(1 - "+ fila + ")" + "(COLUMNAS(1 - " + columna + ")"); 
      posPacman = entrada.next();
@@ -196,6 +202,7 @@ switch(movimiento){
                filapacman = filapacman-1;
               MATRIZ.frutas--;
            }
+             
              
              else if(Matriz[filapacman-1][columnapacman]=="?"){
                  Matriz[filapacman][columnapacman] = " ";
@@ -265,6 +272,13 @@ switch(movimiento){
               
           }
         break;
+        
+        
+        
+        
+        
+        
+        
     case "S":
         
           if(Matriz[filapacman+1][columnapacman] == "@"){
@@ -420,7 +434,11 @@ switch(movimiento){
                columnapacman = columnapacman+1;
                vidas--;
            
-      }else if (Matriz[filapacman][columna]== "|"){
+      }
+          
+          
+          
+          else if (Matriz[filapacman][columna]== "|"){
               
           }else{
           
@@ -428,6 +446,7 @@ switch(movimiento){
         
         
         break;
+        
     case "E":
      
         salir = true;
@@ -435,33 +454,37 @@ switch(movimiento){
         break;
         
     case "M":
-        
-       
+ 
+     do{
        System.out.println(""); //hacer que se repita el mensaje 
-       System.out.println("PACMAN - IPC - 2022");
+       System.out.println("   JUEGO PAUSADO   ");
        System.out.println("-------------------");
-       System.out.println("1.    Reanudar Juego");
+       System.out.println("1.   Reanudar Juego");
        System.out.println("2. TABLA POSICIONES");
-       System.out.println("3.            SALIR");
+       System.out.println("3.    SALIR PARTIDA");
        System.out.println("-------------------");
        System.out.print  ("ELIGA UNA OPCION...");
-       
-        try{// metodo para que no nos salga un error y si lo hay que vaya al catch
+       System.out.println("");
+        try{
       seleccion= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
      if(seleccion == 1){
          
       }else if(seleccion ==2){
+        POSICIONES pos = new POSICIONES();
+      pos.Tabla();
           
       }else if (seleccion == 3){
           salir = true;
+      }else{
+          
       }
-        }catch(InputMismatchException e) {//envia un mensaje que queramos si no cumple alguna de las opciones que estaban anteriormente
- 
-       entrada.nextLine();//entrada para reconocer una letra y no sea infinito el bucle
-        }
        
-
-        
+    }catch(InputMismatchException e){
+    }
+     }while(seleccion !=1 && seleccion !=3);
+      
+      
+        break;
 }
      
       System.out.println("");
@@ -480,9 +503,12 @@ switch(movimiento){
    System.out.println("Sus Datos obtenidos fueron:");
    System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos   );
    System.out.println("------------------------------------------------");
-   vidas = 3;
-   puntos = 0;
-      
+   cont++;
+   nombretop = MATRIZ.nombre;
+   POSICIONES.FRUTAS[topfrutas] = puntos;
+    topfrutas++;
+    Top[num]= MATRIZ.nombre;
+        num++;
    }catch(InputMismatchException e){
 
    }
