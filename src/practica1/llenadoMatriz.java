@@ -25,10 +25,12 @@ public class llenadoMatriz {
     static int vidas = 3;
   static int topfrutas = 1;
     static int seleccion=0;
-    
+    static int REPTRAMPA=0;
+   static String Matriz[][] = new String[0][0];
  static int marcofila = 0;
   static int filapacman= 0;
      static int columnapacman =0;
+      static String posPacman = "";
       public String[][] TABLERO(){
           
      
@@ -36,7 +38,7 @@ public class llenadoMatriz {
    try{  
        //LLENADO DE MATRIZ
            Scanner entrada = new Scanner(System.in);
-      String posPacman = "";
+    
        int contadorfrutas = 0;
        int contadorparedes= 0;
        int contadortrampas = 0;
@@ -137,7 +139,9 @@ public class llenadoMatriz {
            }
   System.out.println("");
   
-  //Pedir datos al usuario sobre el Pacman
+  
+   
+ 
   do{
         do{
              vidas = 3;
@@ -182,7 +186,7 @@ public class llenadoMatriz {
            }
   System.out.println("");
     
-       int salida = 0;
+      
   do{    
  System.out.println("W = subir  S = Bajar  A = Izquierda  D = derecha");
  System.out.println("E = finalizar juego M= pausar juego");
@@ -193,6 +197,7 @@ switch(movimiento){
         //Movimiento hacia arriba
   
         case "W" :
+       
              if(Matriz[filapacman-1][columnapacman] == "@"){
               Matriz[filapacman][columnapacman] = " ";
                Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
@@ -221,14 +226,14 @@ switch(movimiento){
           }
           
           
-          //metodo para que aparezca de nuevo una trampa//
+       
           else if(Matriz[filapacman-1][columnapacman] == "X"){
               Matriz[filapacman][columnapacman] = " ";
               Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
              
               
                filapacman = filapacman-1;
-             
+            
               vidas--;
              
            
@@ -266,11 +271,27 @@ switch(movimiento){
            Matriz[fila][columnapacman] = MATRIZ.ficha;
            filapacman = fila;
             vidas--;
+           
        }
           }     
         else {
               
           }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         break;
         
         
@@ -350,9 +371,11 @@ switch(movimiento){
            Matriz[fila][columnapacman] = " ";
            Matriz[1][columnapacman] = MATRIZ.ficha;
            filapacman = 1;
-         
+  
             vidas--;
+            
        }
+              
           }
           
          
@@ -383,13 +406,12 @@ switch(movimiento){
               
           }
           
-          
-          //metodo para que aparezca de nuevo una trampa//
+   
           else if(Matriz[filapacman][columnapacman-1] == "X"){
               Matriz[filapacman][columnapacman] = " ";
               Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
             
-         
+         REPTRAMPA = 1;
                columnapacman = columnapacman-1;
            vidas--;
            
@@ -430,7 +452,7 @@ switch(movimiento){
               Matriz[filapacman][columnapacman] = " ";
               Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
             
-            
+            REPTRAMPA = 1;
                columnapacman = columnapacman+1;
                vidas--;
            
@@ -497,6 +519,9 @@ switch(movimiento){
            System.out.println("  ");
            }
   System.out.println("");
+  
+  
+  
   } while(MATRIZ.frutas>0 && vidas>0 && !salir );
 
    System.out.println("------------------------------------------------");

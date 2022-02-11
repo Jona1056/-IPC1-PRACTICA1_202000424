@@ -8,12 +8,11 @@ import java.util.Scanner;
 
 
 public class PRACTICA1 {
-    static int OPCION = 0;
- static int cont = 1;
+static int OPCION = 0;
+static int cont = 0;
  
     public static void main(String[] args) {
-     
-      
+  
        Scanner entrada = new Scanner(System.in);
        boolean salir = false; //dato para guardar el metodo de salir, lo ponemos false
        while(!salir){
@@ -27,9 +26,9 @@ public class PRACTICA1 {
        System.out.print  ("ELIGA UNA OPCION...");
 
    
-      try{// metodo para que no nos salga un error y si lo hay que vaya al catch
+       try{// metodo para que no nos salga un error y si lo hay que vaya al catch
       OPCION= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
-      switch(OPCION){
+       switch(OPCION){
   
       case 1:
    
