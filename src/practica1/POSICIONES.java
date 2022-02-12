@@ -7,13 +7,7 @@ import java.util.Scanner;
 import static practica1.MATRIZ.Pos;
 import static practica1.MATRIZ.columna;
 import static practica1.MATRIZ.fila;
-import static practica1.llenadoMatriz.Matriz;
-import static practica1.llenadoMatriz.columnapacman;
-import static practica1.llenadoMatriz.filapacman;
 
-import static practica1.llenadoMatriz.posPacman;
-import static practica1.llenadoMatriz.puntos;
-import static practica1.llenadoMatriz.vidas;
 
 /**
  *
@@ -87,16 +81,13 @@ public class POSICIONES {
             
          
             
-            
-            
-            
-            
-         /*   
+ 
+    
+        }else if(PRACTICA1.cont>3){
+         
            for(int i = 1; i<PRACTICA1.cont; i++){
             for(int j = 1; j<PRACTICA1.cont-1; j++){
-               if(PRACTICA1.cont ==1){
-                   
-               }else if(PRACTICA1.cont>1){
+               
                 
                 
                 if(FRUTAS[j-1] < FRUTAS[j]){
@@ -104,7 +95,7 @@ public class POSICIONES {
                     FRUTAS[j-1] = FRUTAS[j];
                     FRUTAS[j] = a;
                             }
-                }
+                
                 
             }
    
@@ -119,9 +110,6 @@ public class POSICIONES {
         }
        System.out.println("--------------");
             System.out.println("");
-      
-        */
-    
         }
       
     }
@@ -142,7 +130,7 @@ public boolean validacion(){
                System.out.println("El tablero no puede contener columnas tan pequeñas");
         }
             else if(fila >25 ){
-            System.out.println("El tablero no contener filas tan pequeñas");
+            System.out.println("El tablero no puede contener filas tan pequeñas");
         }else if(columna>25){
             System.out.println("El tablero no puede contener columnas tan grandes");
         }

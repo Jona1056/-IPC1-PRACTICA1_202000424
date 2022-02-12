@@ -198,6 +198,92 @@ switch(movimiento){
   
         case "W" :
        
+if(REPTRAMPA ==1){
+    REPTRAMPA = 0;
+    if(Matriz[filapacman-1][columnapacman] == "@"){
+              Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
+               
+              puntos = puntos +5;
+             
+               filapacman = filapacman-1;
+              MATRIZ.frutas--;
+           }
+             
+             
+             else if(Matriz[filapacman-1][columnapacman]=="?"){
+                 Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
+               
+               filapacman = filapacman-1;
+               puntos = puntos+10;
+                 MATRIZ.frutas--;
+          }else if(Matriz[filapacman-1][columnapacman] == " "){
+               Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
+               
+               filapacman = filapacman-1;
+          }else if(Matriz[filapacman-1][columnapacman] == "#"){
+              
+          }
+          
+          
+       
+          else if(Matriz[filapacman-1][columnapacman] == "X"){
+              Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
+             
+              
+               filapacman = filapacman-1;
+            
+              vidas--;
+              REPTRAMPA = 1;
+             
+          
+             
+           
+      } //MOVIMINETO DESDE ARRIBA HACIA LA PARTE DE ABAJO
+          else if(Matriz[0][columnapacman]== "-"){
+       if(Matriz[fila][columnapacman]== " "){
+           Matriz[1][columnapacman] = "X";
+              Matriz[fila][columnapacman] = MATRIZ.ficha;
+              filapacman = fila;
+                }
+       
+       else if(Matriz[fila][columnapacman] == "@"){
+            Matriz[1][columnapacman] = "X";
+             Matriz[fila][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = fila;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[fila][columnapacman]=="?"){
+           Matriz[1][columnapacman] = "X";
+             Matriz[fila][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = fila;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[fila][columnapacman]== "#"){
+        }
+       
+     
+       else  if(Matriz[fila][columnapacman]== "X"){
+           Matriz[1][columnapacman] = "X";
+           Matriz[fila][columnapacman] = MATRIZ.ficha;
+           filapacman = fila;
+            vidas--;
+           REPTRAMPA = 1;
+       }
+          }     
+        else {
+              
+          }
+}else{
+            
              if(Matriz[filapacman-1][columnapacman] == "@"){
               Matriz[filapacman][columnapacman] = " ";
                Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
@@ -235,6 +321,9 @@ switch(movimiento){
                filapacman = filapacman-1;
             
               vidas--;
+              REPTRAMPA = 1;
+             
+          
              
            
       } //MOVIMINETO DESDE ARRIBA HACIA LA PARTE DE ABAJO
@@ -271,27 +360,15 @@ switch(movimiento){
            Matriz[fila][columnapacman] = MATRIZ.ficha;
            filapacman = fila;
             vidas--;
-           
+           REPTRAMPA = 1;
        }
           }     
         else {
               
           }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+}
+       
         break;
         
         
@@ -301,6 +378,88 @@ switch(movimiento){
         
         
     case "S":
+        
+        if(REPTRAMPA == 1){
+            REPTRAMPA = 0;
+            
+             if(Matriz[filapacman+1][columnapacman] == "@"){
+              Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+               
+              puntos = puntos +5;
+               
+               filapacman = filapacman+1;
+              MATRIZ.frutas--;
+          }else if(Matriz[filapacman+1][columnapacman]=="?"){
+                 Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+              
+               filapacman = filapacman+1;
+               puntos = puntos+10;
+                 MATRIZ.frutas--;
+          }else if(Matriz[filapacman+1][columnapacman] == " "){
+               Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+            
+               filapacman = filapacman+1;
+          }else if(Matriz[filapacman+1][columnapacman] == "#"){
+              
+          }
+          
+          
+      
+          else if(Matriz[filapacman+1][columnapacman] == "X"){
+              Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
+            
+            REPTRAMPA = 1;
+               filapacman = filapacman+1;
+            vidas--;
+           
+      }
+          
+          //METODO MOVIMIENTO DE ABAJO PARA ARRIBA
+          else if (Matriz[fila+1][columnapacman]=="-"){
+              if(Matriz[1][columnapacman]== " "){
+              Matriz[fila][columnapacman] = "X";
+              Matriz[1][columnapacman] = MATRIZ.ficha;
+              filapacman = 1;
+          }
+              
+              else if(Matriz[1][columnapacman] == "@"){
+            Matriz[fila][columnapacman] = "X";
+             Matriz[1][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = 1;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[1][columnapacman]=="?"){
+           Matriz[fila][columnapacman] = "X";
+             Matriz[1][columnapacman] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               filapacman = 1;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[1][columnapacman]== "#"){
+        }
+       
+     
+       else  if(Matriz[1][columnapacman]== "X"){
+           Matriz[fila][columnapacman] = "X";
+           Matriz[1][columnapacman] = MATRIZ.ficha;
+           filapacman = 1;
+  REPTRAMPA = 1;
+            vidas--;
+            
+       }
+              
+          }
+            
+        }else{
+        
         
           if(Matriz[filapacman+1][columnapacman] == "@"){
               Matriz[filapacman][columnapacman] = " ";
@@ -332,7 +491,7 @@ switch(movimiento){
               Matriz[filapacman][columnapacman] = " ";
               Matriz[filapacman+1][columnapacman] = MATRIZ.ficha;
             
-            
+            REPTRAMPA = 1;
                filapacman = filapacman+1;
             vidas--;
            
@@ -371,19 +530,65 @@ switch(movimiento){
            Matriz[fila][columnapacman] = " ";
            Matriz[1][columnapacman] = MATRIZ.ficha;
            filapacman = 1;
-  
+  REPTRAMPA = 1;
             vidas--;
             
        }
               
           }
           
-         
+        }
       
         break;
     case "A":
+        
+        
+        if(REPTRAMPA== 1){
+              REPTRAMPA = 0;   
+            if(Matriz[filapacman][columnapacman-1] == "@"){
+              Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+               
+              puntos = puntos +5;
+           
+               columnapacman = columnapacman-1;
+              MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman-1]=="?"){
+                 Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+            
+               columnapacman= columnapacman-1;
+               puntos = puntos+10;
+                 MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman-1] == " "){
+               Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+           
+               columnapacman = columnapacman-1;
+          }else if(Matriz[filapacman][columnapacman-1] == "#"){
+              
+          }
+          
+   
+          else if(Matriz[filapacman][columnapacman-1] == "X"){
+              Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
+            
+         REPTRAMPA = 1;
+               columnapacman = columnapacman-1;
+           vidas--;
+           
+          }else if(Matriz[filapacman][1]=="|"){
+              
+          }else{
+          
+      }
+   }   
+        else{
+        
+    
          if(Matriz[filapacman][columnapacman-1] == "@"){
-              Matriz[filapacman][columnapacman] = " ";
+              Matriz[filapacman][columnapacman] = "";
                Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
                
               puntos = puntos +5;
@@ -420,8 +625,60 @@ switch(movimiento){
           }else{
           
       }
+        }
         break;
     case "D":
+        if (REPTRAMPA == 1){
+            REPTRAMPA =0;
+             if(Matriz[filapacman][columnapacman+1] == "@"){
+              Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+               
+              puntos = puntos +5;
+            
+               columnapacman = columnapacman+1;
+              MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman+1]=="?"){
+                 Matriz[filapacman][columnapacman] = "X";
+               Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+          
+               columnapacman= columnapacman+1;
+               puntos = puntos+10;
+                 MATRIZ.frutas--;
+          }else if(Matriz[filapacman][columnapacman+1] == " "){
+               Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+           
+               columnapacman = columnapacman+1;
+          }else if(Matriz[filapacman][columnapacman+1] == "#"){
+              
+          }
+          
+          
+          //metodo para que aparezca de nuevo una trampa//
+          else if(Matriz[filapacman][columnapacman+1] == "X"){
+              Matriz[filapacman][columnapacman] = "X";
+              Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
+            
+            REPTRAMPA = 1;
+               columnapacman = columnapacman+1;
+               vidas--;
+           
+      }
+          
+          
+          
+          else if (Matriz[filapacman][columna]== "|"){
+              
+          }else{
+          
+      }
+        }else{
+        
+        
+        
+        
+        
          if(Matriz[filapacman][columnapacman+1] == "@"){
               Matriz[filapacman][columnapacman] = " ";
                Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
@@ -466,7 +723,7 @@ switch(movimiento){
           
       }
         
-        
+        }
         break;
         
     case "E":
@@ -520,7 +777,7 @@ switch(movimiento){
            }
   System.out.println("");
   
-  
+   
   
   } while(MATRIZ.frutas>0 && vidas>0 && !salir );
 
