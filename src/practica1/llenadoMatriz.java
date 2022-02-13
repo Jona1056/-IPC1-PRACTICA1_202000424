@@ -181,8 +181,11 @@ switch(movimiento){
         //Movimiento hacia arriba
   
         case "W" :
-       
-    if(REPTRAMPA ==1){//metodo para generar una trampa de nuevo, AL PRINCIPIO NO VA A ENTRAR A ESTE IF PERO SI CAE EN UNA X LA VARIABLE REPTRAPMA SE CONVERTIRA EN 1 Y HARA TODO LO SIGUIENTE
+        case "w" :
+        case "8":
+            
+            
+            if(REPTRAMPA ==1){//metodo para generar una trampa de nuevo, AL PRINCIPIO NO VA A ENTRAR A ESTE IF PERO SI CAE EN UNA X LA VARIABLE REPTRAPMA SE CONVERTIRA EN 1 Y HARA TODO LO SIGUIENTE
     REPTRAMPA = 0;
     if(Matriz[filapacman-1][columnapacman] == "@"){
               Matriz[filapacman][columnapacman] = "X";
@@ -353,7 +356,8 @@ switch(movimiento){
     //MOVIMIENTO HACIA ABAJO
         
     case "S":
-        
+    case "s":
+    case "5":
         if(REPTRAMPA == 1){
             REPTRAMPA = 0;
             
@@ -515,8 +519,8 @@ switch(movimiento){
       
         break;
     case "A":
-        
-        
+    case "a":
+    case "4":       
         if(REPTRAMPA== 1){
               REPTRAMPA = 0;   
             if(Matriz[filapacman][columnapacman-1] == "@"){
@@ -678,6 +682,8 @@ switch(movimiento){
         }
         break;
     case "D":
+    case "d":
+    case "6":
         if (REPTRAMPA == 1){
             REPTRAMPA =0;
              if(Matriz[filapacman][columnapacman+1] == "@"){
@@ -851,13 +857,13 @@ switch(movimiento){
         break;
         
     case "E":
-     
+    case "e":
         salir = true;
     
         break;
         
     case "M":
- 
+    case "m":
      do{
        System.out.println(""); //hacer que se repita el mensaje 
        System.out.println("   JUEGO PAUSADO   ");
