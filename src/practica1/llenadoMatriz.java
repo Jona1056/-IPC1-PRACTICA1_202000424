@@ -23,45 +23,45 @@ public class llenadoMatriz {
     static int punto = 0;
     static int puntos = 0;
     static int vidas = 3;
-  static int topfrutas = 1;
+    static int topfrutas = 1;
     static int seleccion=0;
     static int REPTRAMPA=0;
-   static String Matriz[][] = new String[0][0];
- static int marcofila = 0;
-  static int filapacman= 0;
-     static int columnapacman =0;
-      static String posPacman = "";
-      public String[][] TABLERO(){
+    static int marcofila = 0;
+    static int filapacman= 0;
+    static int columnapacman =0;
+    static String posPacman = "";
+    static String Matriz[][] = new String[marcofila][filapacman];
+    public String[][] TABLERO(){
           
      
        Random random = new Random();
-   try{  
+       try{ 
        //LLENADO DE MATRIZ
-           Scanner entrada = new Scanner(System.in);
+       Scanner entrada = new Scanner(System.in);
     
        int contadorfrutas = 0;
        int contadorparedes= 0;
        int contadortrampas = 0;
        int marcofila = fila + 2;//le agregamos 2 para el marco, 1 que es la primera fila y la ultima y asi no se altera el numero de filas y columnas que pidio el usuario
        int marcocolumna = columna + 2;
-         String Matriz[][] = new String[marcofila][marcocolumna];
+       String Matriz[][] = new String[marcofila][marcocolumna];
          
-         //llenado de Matriz sin imprimir//
-       for(int i = 0; i<marcofila; i++){
+           //llenado de Matriz sin imprimir//
+           for(int i = 0; i<marcofila; i++){
            for(int j = 0; j <marcocolumna; j++){
            if(i == 0 || i== fila+1){//delimita las columnas para el marco
-             Matriz[i][j] = "-";
+           Matriz[i][j] = "-";
            }else if (j == 0 || j == columna+1){
-               Matriz[i][j]= "|";
+           Matriz[i][j]= "|";
            }else
-               Matriz[i][j]= " ";
+           Matriz[i][j]= " ";
            if((i ==fila && (j==columna))){//condicion para que cuando ya esten las filas y columnas creadas, empieze a llenar con las frutas, paredes y trmampas;
                
                //IMPRESION DE FRUTAS
                if(MATRIZ.frutas ==0){
                
                // SI EL USUARIO PIDE 0 FRUTAS NO HACE NI UNA ACCINO
-            }else{
+             }else{
                do{ //COMIENZA ACCION DE GENERAR FRUTAS AL AZAR
                    int tipodefruta = random.nextInt(2);// GUARDAMOS EN UNA VARIABLE QUE NOS DE NUMEROS DE 0 A 1
                    if(tipodefruta == 0){ // SI LA VARIABLE ES IGUAL A 0 IMPRIMIRA  @
@@ -92,7 +92,7 @@ public class llenadoMatriz {
                }
                
                // IMPRESION DE PAREDES
-               if(MATRIZ.paredes == 0){
+               if(MATRIZ.paredes == 0){// SI PAREDES SON 0 NO HACE NADA
                }else{
                do{// repetimos el proceso pero ahora para paredes
                    int x = random.nextInt(fila+1);
@@ -128,63 +128,47 @@ public class llenadoMatriz {
             
      
    
-//imprimir matriz
+    //imprimir matriz solo con las parredes frutas y trmpas  
     System.out.println("JUGADOR: "+ MATRIZ.nombre);
         
-  for(int i = 0; i<marcofila; i++){
+           for(int i = 0; i<marcofila; i++){
            for(int j = 0; j <marcocolumna; j++){
-         System.out.print(Matriz[i][j] +"   ");
+           System.out.print(Matriz[i][j] +"   ");
            }
            System.out.println("  ");
            }
-  System.out.println("");
+           System.out.println("");
   
-  
-   
- 
-  do{
-        do{
-             vidas = 3;
-             puntos = 0;
-     System.out.println("------------------");
-     System.out.print("INGRESE LA POSICION DE EL PACMAN; (FILAS(1 - "+ fila + ")" + "(COLUMNAS(1 - " + columna + ")"); 
-     posPacman = entrada.next();
-     String []datos = posPacman.split(",");
-     System.out.println("------------------");
+POSICIONES POS = new POSICIONES(); 
+
+ do{
+        //que se repita el pos validar hasta que nos de un true//
+           
+       }while(POS.VALIDAR() == false);
+
+ if(Matriz[filapacman][columnapacman] == "@" || Matriz[filapacman][columnapacman] == "?" || Matriz[filapacman][columnapacman] == "#" || Matriz[filapacman][columnapacman] == "X" ){
+   System.out.println("La posicion que eligio ya esta ocupada");
+     do{
+        //que se repita el metodo validar si nos da una posicion que ya este ocupada//
+           
+       }while(POS.VALIDAR() == false);
+ }else{
+     
+ }
+
     
-    
-   
-   filapacman = Integer.parseInt(datos[0]);
-   columnapacman = Integer.parseInt(datos[1]);
- 
-       if(filapacman >fila || columnapacman > columna){
-           System.out.println("la fila o columna que ingreso no existe");
-       }
-   }while(filapacman>fila || columnapacman> columna);
-   if(filapacman == 0 ||   filapacman > fila ){
-       System.out.println("el numero de fila esta fuera del rango permitido");
-   }if(columnapacman == 0 || columnapacman > columna){
-       System.out.println("el numero de columna esta fuera del rango permitido");
-   }
-   if(Matriz[filapacman][columnapacman] == "@" || Matriz[filapacman][columnapacman] == "?" || Matriz[filapacman][columnapacman] == "#" || Matriz[filapacman][columnapacman] == "X" ){
-       System.out.println("La posicion que eligio ya esta ocupada");
-   }
-       
-   
-  }while(filapacman == 0 || columnapacman == 0 || filapacman >fila || columnapacman > columna || Matriz[filapacman][columnapacman] == "@" || Matriz[filapacman][columnapacman] == "?" || Matriz[filapacman][columnapacman] == "#" || Matriz[filapacman][columnapacman] == "X" );   
- 
   Matriz[filapacman][columnapacman] = MATRIZ.ficha ;
      
    System.out.println("");
     System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos   );
         
-  for(int i = 0; i<marcofila; i++){
+         for(int i = 0; i<marcofila; i++){
            for(int j = 0; j <marcocolumna; j++){
          System.out.print(Matriz[i][j] +"   ");
            }
            System.out.println("  ");
            }
-  System.out.println("");
+             System.out.println("");
     
       
   do{    
@@ -198,7 +182,7 @@ switch(movimiento){
   
         case "W" :
        
-if(REPTRAMPA ==1){
+    if(REPTRAMPA ==1){//metodo para generar una trampa de nuevo, AL PRINCIPIO NO VA A ENTRAR A ESTE IF PERO SI CAE EN UNA X LA VARIABLE REPTRAPMA SE CONVERTIRA EN 1 Y HARA TODO LO SIGUIENTE
     REPTRAMPA = 0;
     if(Matriz[filapacman-1][columnapacman] == "@"){
               Matriz[filapacman][columnapacman] = "X";
@@ -209,8 +193,6 @@ if(REPTRAMPA ==1){
                filapacman = filapacman-1;
               MATRIZ.frutas--;
            }
-             
-             
              else if(Matriz[filapacman-1][columnapacman]=="?"){
                  Matriz[filapacman][columnapacman] = "X";
                Matriz[filapacman-1][columnapacman] = MATRIZ.ficha;
@@ -226,8 +208,6 @@ if(REPTRAMPA ==1){
           }else if(Matriz[filapacman-1][columnapacman] == "#"){
               
           }
-          
-          
        
           else if(Matriz[filapacman-1][columnapacman] == "X"){
               Matriz[filapacman][columnapacman] = "X";
@@ -240,7 +220,6 @@ if(REPTRAMPA ==1){
               REPTRAMPA = 1;
              
           
-             
            
       } //MOVIMINETO DESDE ARRIBA HACIA LA PARTE DE ABAJO
           else if(Matriz[0][columnapacman]== "-"){
@@ -371,11 +350,7 @@ if(REPTRAMPA ==1){
        
         break;
         
-        
-        
-        
-        
-        
+    //MOVIMIENTO HACIA ABAJO
         
     case "S":
         
@@ -533,8 +508,7 @@ if(REPTRAMPA ==1){
   REPTRAMPA = 1;
             vidas--;
             
-       }
-              
+       }    
           }
           
         }
@@ -577,9 +551,45 @@ if(REPTRAMPA ==1){
          REPTRAMPA = 1;
                columnapacman = columnapacman-1;
            vidas--;
-           
-          }else if(Matriz[filapacman][1]=="|"){
-              
+           //METODO PARA QUE SE VAYA DE IZQUIERDA A DERECHA SI HAY UNA X AHI
+          }else if(Matriz[filapacman][0]=="|"){
+          if(Matriz[filapacman][columna]== " "){
+           Matriz[filapacman][1] = "X";
+              Matriz[filapacman][columna] = MATRIZ.ficha;
+              columnapacman = columna;
+                }
+       
+       else if(Matriz[filapacman][columna] == "@"){
+            Matriz[filapacman][1] = "X";
+             Matriz[filapacman][columna] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+              columnapacman = columna;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[filapacman][columna]=="?"){
+           Matriz[filapacman][1] = "X";
+             Matriz[filapacman][columna] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               columnapacman = columna;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[filapacman][columna]== "#"){
+        }
+       
+     
+       else  if(Matriz[filapacman][columna]== "X"){
+           Matriz[filapacman][1] = "X";
+           Matriz[filapacman][columna] = MATRIZ.ficha;
+         columnapacman = columna;
+            vidas--;
+           REPTRAMPA = 1;
+       }
+          
+            
+       
           }else{
           
       }
@@ -588,7 +598,7 @@ if(REPTRAMPA ==1){
         
     
          if(Matriz[filapacman][columnapacman-1] == "@"){
-              Matriz[filapacman][columnapacman] = "";
+              Matriz[filapacman][columnapacman] = " ";
                Matriz[filapacman][columnapacman-1] = MATRIZ.ficha;
                
               puntos = puntos +5;
@@ -619,12 +629,52 @@ if(REPTRAMPA ==1){
          REPTRAMPA = 1;
                columnapacman = columnapacman-1;
            vidas--;
-           
-          }else if(Matriz[filapacman][1]=="|"){
+           //METODO DE IZQUIERDA A DERECHA CON ESPACIOS VACIOS
+          }else if(Matriz[filapacman][0]=="|"){
               
+              if(Matriz[filapacman][columna]== " "){
+           Matriz[filapacman][1] = " ";
+              Matriz[filapacman][columna] = MATRIZ.ficha;
+              columnapacman = columna;
+                }
+       
+       else if(Matriz[filapacman][columna] == "@"){
+            Matriz[filapacman][1] = " ";
+             Matriz[filapacman][columna] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+              columnapacman = columna;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[filapacman][columna]=="?"){
+           Matriz[filapacman][1] = " ";
+             Matriz[filapacman][columna] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+               columnapacman = columna;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[filapacman][columna]== "#"){
+        }
+       
+     
+       else  if(Matriz[filapacman][columna]== "X"){
+           Matriz[filapacman][1] = " ";
+           Matriz[filapacman][columna] = MATRIZ.ficha;
+         columnapacman = columna;
+            vidas--;
+           REPTRAMPA = 1;
+       }
+          
+            
+       
           }else{
           
       }
+              
+              
+      
         }
         break;
     case "D":
@@ -655,7 +705,7 @@ if(REPTRAMPA ==1){
           }
           
           
-          //metodo para que aparezca de nuevo una trampa//
+    
           else if(Matriz[filapacman][columnapacman+1] == "X"){
               Matriz[filapacman][columnapacman] = "X";
               Matriz[filapacman][columnapacman+1] = MATRIZ.ficha;
@@ -667,9 +717,43 @@ if(REPTRAMPA ==1){
       }
           
           
-          
-          else if (Matriz[filapacman][columna]== "|"){
+          //METODO DE DERECHA A IZQUIERDA CON TRAMMPAS
+          else if (Matriz[filapacman][columna+1]== "|"){
+                if(Matriz[filapacman][1]== " "){
+              Matriz[filapacman][columna] = "X";
+              Matriz[filapacman][1] = MATRIZ.ficha;
+              columnapacman = 1;
+          }
               
+              else if(Matriz[filapacman][1] == "@"){
+            Matriz[filapacman][columna] = "X";
+             Matriz[filapacman][1] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+                columnapacman = 1;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[filapacman][1]=="?"){
+           Matriz[filapacman][columna] = "X";
+             Matriz[filapacman][1] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+              columnapacman = 1;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[filapacman][1]== "#"){
+        }
+       
+     
+       else  if(Matriz[filapacman][1]== "X"){
+           Matriz[filapacman][columna] = "X";
+           Matriz[filapacman][1] = MATRIZ.ficha;
+           columnapacman = 1;
+  REPTRAMPA = 1;
+            vidas--;
+            
+       }
           }else{
           
       }
@@ -715,9 +799,49 @@ if(REPTRAMPA ==1){
            
       }
           
+          //metodo de derecha a izquierda con espacios vacios
           
-          
-          else if (Matriz[filapacman][columna]== "|"){
+          else if (Matriz[filapacman][columna+1]== "|"){
+               if(Matriz[filapacman][1]== " "){
+              Matriz[filapacman][columna] = " ";
+              Matriz[filapacman][1] = MATRIZ.ficha;
+              columnapacman = 1;
+          }
+              
+              else if(Matriz[filapacman][1] == "@"){
+            Matriz[filapacman][columna] = " ";
+             Matriz[filapacman][1] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+                columnapacman = 1;
+                puntos = puntos +5;
+    }        
+       
+      
+       else if(Matriz[filapacman][1]=="?"){
+           Matriz[filapacman][columna] = " ";
+             Matriz[filapacman][1] = MATRIZ.ficha;
+               MATRIZ.frutas--;
+              columnapacman = 1;
+                puntos = puntos +10;
+      }
+      
+       else  if(Matriz[filapacman][1]== "#"){
+        }
+       
+     
+       else  if(Matriz[filapacman][1]== "X"){
+           Matriz[filapacman][columna] = " ";
+           Matriz[filapacman][1] = MATRIZ.ficha;
+           columnapacman = 1;
+  REPTRAMPA = 1;
+            vidas--;
+            
+       }
+              
+              
+              
+              
+              
               
           }else{
           
@@ -786,11 +910,17 @@ if(REPTRAMPA ==1){
    System.out.println("JUGADOR: "+ MATRIZ.nombre + "," +  " vidas: " +vidas + ", " + "Puntos: " + puntos   );
    System.out.println("------------------------------------------------");
    cont++;
-   nombretop = MATRIZ.nombre;
+   if(topfrutas <11){
+
    POSICIONES.FRUTAS[topfrutas] = puntos;
-    topfrutas++;
-    Top[num]= MATRIZ.nombre;
-        num++;
+    topfrutas++;}else{
+       
+   }if(num <11){
+      nombretop = MATRIZ.nombre;
+      Top[num]= MATRIZ.nombre;
+        num++;}else{
+       
+   }
    }catch(InputMismatchException e){
 
    }

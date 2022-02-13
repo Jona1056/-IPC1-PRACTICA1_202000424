@@ -10,29 +10,28 @@ public class MATRIZ {
   
    static int num = 1;
    static     int selecjugador = 0;
-   static  String []datos = new String[1];
-              
-     static String ficha = "";
-     static  int frutas =0;
-     static int paredes = 0;
-     static int trampas = 0;
-     static int fila = 0;
-     static int columna =0;
-     static String nombre = "";
-     static String Pos="";
-     public static void Matriz(){
-         DecimalFormat formato1 = new DecimalFormat("#");
+   static  String []datos = new String[1];      
+   static String ficha = "";
+   static  int frutas =0;
+   static int paredes = 0;
+   static int trampas = 0;
+   static int fila = 0;
+   static int columna =0;
+   static String nombre = "";
+   static String Pos="";
+   public static void Matriz(){
+    
         llenadoMatriz Matrizllena = new llenadoMatriz();
         Scanner entrada = new Scanner(System.in);
-     try{
+        try{
         do{
-         System.out.println("");
+        System.out.println("");
         System.out.print("INGRESE SU NOMBRE: ");
         nombre = entrada.nextLine(); 
       
        
         if(nombre == ""   ){
-            System.out.print("POR FAVOR, ");
+        System.out.print("POR FAVOR, ");
         }}while(nombre == ""   );
         
       
@@ -43,7 +42,7 @@ public class MATRIZ {
         
         
         
-        POSICIONES VAL = new POSICIONES(); //mandamos a llamar el metodo booleano que nos ayuda a que el programa no compile si el usuario ingresa un dato mal
+       POSICIONES VAL = new POSICIONES();//metodo para que al usuario no le permita meter letras
         
        do{
         
@@ -89,16 +88,17 @@ public class MATRIZ {
         if(  frutas > limitedefrutas){
         System.out.println("ERROR, LIMITE INCORRECTO");
         }else if (frutas == 0){
-            System.out.println("No se permite 0 Frutas en el tablero");
-        }  }   while(frutas > limitedefrutas || frutas == 0);
+        System.out.println("No se permite 0 Frutas en el tablero");
+        } 
+        }while(frutas > limitedefrutas || frutas == 0);
     
         do{
         System.out.print("INGRESE CANTIDAD DE PAREDES: " + "[1 - " + limiteparedes + "]: ");
         paredes = entrada.nextInt();
-        if(  paredes> limiteparedes){
+        if(paredes> limiteparedes){
         System.out.println("ERROR, LIMITE INCORRECTO");
-        } else if (paredes == 0){
-            System.out.println("No se permite 0 Paredes en el tablero");
+        }else if (paredes == 0){
+        System.out.println("No se permite 0 Paredes en el tablero");
         }
         }while(paredes>limiteparedes || paredes ==0);
         
@@ -108,14 +108,14 @@ public class MATRIZ {
         if(  trampas> limitetrampas ){
         System.out.println("ERROR, LIMITE INCORRECTO");
         }else if (trampas == 0){
-            System.out.println("No se permite 0 Trampas en el tablero");
+        System.out.println("No se permite 0 Trampas en el tablero");
         }
         }while(trampas>limitetrampas || trampas == 0);
         
         System.out.println("");
      
            Matrizllena.TABLERO();
-     }catch(InputMismatchException e){
+         }catch(InputMismatchException e){
 
    }
    

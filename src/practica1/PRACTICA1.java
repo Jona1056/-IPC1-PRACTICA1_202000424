@@ -27,15 +27,15 @@ static int cont = 0;
 
    
        try{// metodo para que no nos salga un error y si lo hay que vaya al catch
-      OPCION= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
+       OPCION= entrada.nextInt();// //GUARDAR LA VARIABLE OPCION 
        switch(OPCION){
   
-      case 1:
+       case 1:
    
          
        System.out.println("-------------------");
-      MATRIZ MATRIZ1 = new MATRIZ();
-      MATRIZ1.Matriz();
+       MATRIZ MATRIZ1 = new MATRIZ();
+       MATRIZ1.Matriz();
      
       break;
       case 2:
